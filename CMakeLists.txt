@@ -1,0 +1,99 @@
+project(Game)
+cmake_minimum_required(VERSION 2.8)
+set(CMAKE_CXX_FLAGS "-Wall -std=c++0x")
+
+include_directories("${PROJECT_SOURCE_DIR}/Calamity")
+include_directories("${PROJECT_SOURCE_DIR}/Calamity/include")
+include_directories("/usr/include/freetype2")
+include_directories("${PROJECT_SOURCE_DIR}/Calamity/include/bullet/")
+
+add_subdirectory(Calamity)
+
+set(SRC_LIST
+	ActionHandler.h
+	Common/Gui/LayerItem.cpp
+	Common/GameManager.cpp
+	Common/LayerManager.cpp
+	Common/BoneManager.cpp
+	Common/SharedTriangleData.cpp
+	Common/TriangleObject.cpp
+	Common/SpriteObject.cpp
+	Common/BoneObject.cpp
+	MapEditor/ActionHandler/PanViewHandler.cpp
+	MapEditor/ActionHandler/CreateTriangleHandler.cpp
+	MapEditor/ActionHandler/MoveObjectsHandler.cpp
+	MapEditor/ActionHandler/ScaleObjectsHandler.cpp
+	MapEditor/ActionHandler/RotateObjectsHandler.cpp
+	MapEditor/Actions/CreateTriangleObject.cpp
+	MapEditor/Actions/FillTriangle.cpp
+	MapEditor/Actions/CreateSpriteObject.cpp
+	MapEditor/Actions/RemoveObjects.cpp
+	MapEditor/Actions/SelectObjects.cpp
+	MapEditor/Actions/MoveObjects.cpp
+	MapEditor/Actions/ScaleObjects.cpp
+	MapEditor/Actions/RotateObjects.cpp
+	MapEditor/Actions/CreateLayer.cpp
+	MapEditor/Actions/RemoveLayer.cpp
+	MapEditor/Actions/MoveLayer.cpp
+	MapEditor/Actions/ChangeLayerProperty.cpp
+	MapEditor/Functors/CreateLayerFunctor.cpp
+	MapEditor/Functors/RemoveLayerFunctor.cpp
+	MapEditor/Functors/MoveLayerFunctor.cpp
+	MapEditor/Functors/SelectLayerFunctor.cpp
+	MapEditor/Functors/LoadLayerListFunctor.cpp
+	MapEditor/Gui/ObjectItem.cpp
+	MapEditor/MapEditor.cpp
+	MapEditor/MapEditorSelection.cpp
+	MapEditor/MapEditorProperties.cpp
+	MapEditor/MapObjectProperties.cpp
+	MapEditor/LayerProperties.cpp
+	CharacterEditor/ActionHandler/CreateBonesHandler.cpp
+	CharacterEditor/ActionHandler/MoveBonesHandler.cpp
+	CharacterEditor/ActionHandler/ScaleBonesHandler.cpp
+	CharacterEditor/ActionHandler/RotateBonesHandler.cpp
+	CharacterEditor/Actions/ChangeBoneProperty.cpp
+	CharacterEditor/Actions/CreateBones.cpp
+	CharacterEditor/Actions/RemoveBones.cpp
+	CharacterEditor/Actions/SelectBones.cpp
+	CharacterEditor/Actions/MoveBones.cpp
+	CharacterEditor/Actions/ScaleBones.cpp
+	CharacterEditor/Actions/RotateBones.cpp
+	CharacterEditor/Actions/ReorderBone.cpp
+	CharacterEditor/Actions/SetBonesParent.cpp
+	CharacterEditor/Functors/LoadBoneListFunctor.cpp
+	CharacterEditor/Functors/ReorderBoneFunctor.cpp
+	CharacterEditor/Gui/BoneItem.cpp
+	CharacterEditor/CharacterEditor.cpp
+	CharacterEditor/BoneSelection.cpp
+	CharacterEditor/BoneProperties.cpp
+	CharacterEditor/CharacterEditorProperties.cpp
+	CharacterSystem/ActionHandler/MoveSelection3DHandler.cpp
+	CharacterSystem/Actions/MoveSelection3D.cpp
+	CharacterSystem/Functors/LoadBone3DListFunctor.cpp
+	CharacterSystem/Gui/Bone3DItem.cpp
+	CharacterSystem/Gui/CharacterComponentItem.cpp
+	CharacterSystem/Texture.cpp
+	CharacterSystem/Camera.cpp
+	CharacterSystem/Mesh.cpp
+	CharacterSystem/CharacterSkeleton.cpp
+	CharacterSystem/Lights.cpp
+	CharacterSystem/GameObject3D.cpp
+	CharacterSystem/Selection3D.cpp
+	CharacterSystem/MeshObject.cpp
+	CharacterSystem/ClothObject.cpp
+	CharacterSystem/CharacterController.cpp
+	CharacterSystem/CharacterMeshComponent.cpp
+	CharacterSystem/CharacterClothComponent.cpp
+	CharacterSystem/CharacterObject.cpp
+	CharacterSystem/IKTestObject.cpp
+	CharacterSystem/Terrain.cpp
+	CharacterSystem/Test.cpp
+	CharacterSystem/DebugDraw.cpp
+	CharacterSystem/GBuffer.cpp
+	CharacterSystem/CharacterEditor3DProperties.cpp
+	main.cpp
+)
+
+add_executable(${PROJECT_NAME} ${SRC_LIST})
+target_link_libraries(${PROJECT_NAME} Calamity)
+
